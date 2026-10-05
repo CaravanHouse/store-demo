@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+/* Nafis (демо): тёплая косметическая тема — терракота на кремовом */
+@theme {
+  --color-bg: #fbf6f1;
+  --color-surface: #ffffff;
+  --color-ink: #2a1a14;
+  --color-muted: #7a665c;
+  --color-subtle: #a8968c;
+  --color-line: #eee2d8;
+  --color-brand: #c8553d;
+  --color-brand-dark: #a2402c;
+  --color-brand-soft: #f8e5dc;
+  --color-gold: #d8a24a;
+  --color-sage: #6f8a5c;
+
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-prata), Georgia, serif;
+}
+
+@layer base {
+  html,
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-tap-highlight-color: transparent;
+  }
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+  ::selection {
+    background-color: rgb(200 85 61 / 0.2);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@utility input {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  border-radius: 0.9rem;
+  background-color: var(--color-surface);
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  &:focus {
+    outline: none;
+    border-color: var(--color-brand);
+    box-shadow: 0 0 0 4px rgb(200 85 61 / 0.14);
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@utility animate-pop {
+  animation: pop 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+@utility animate-slide-in {
+  animation: slide-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@utility animate-bob {
+  animation: bob 6s ease-in-out infinite;
+}
