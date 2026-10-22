@@ -11,7 +11,7 @@ import LangSwitch from "./LangSwitch";
 import Logo from "./Logo";
 
 /** Переключить фильтр каталога из шапки (Catalog слушает событие) */
-export const showCategory = (category: Category | "all", sort?: "popular") => {
+const showCategory = (category: Category | "all", sort?: "popular") => {
   window.dispatchEvent(new CustomEvent("store:filter", { detail: { category, sort } }));
   document.getElementById("catalog")?.scrollIntoView();
 };
